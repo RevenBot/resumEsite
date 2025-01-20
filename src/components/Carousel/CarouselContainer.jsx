@@ -3,7 +3,7 @@ import { useRoute } from "wouter";
 import Rig from "./RigCarousel";
 import Banner from "./BannerCarousel";
 import CarouselItems from "./CarouselItems";
-import file from "../../assets/textures/about-me3d720p.hdr";
+import file from "../../assets/textures/asteroid.hdr";
 
 function CarouselContainer({ frames }) {
   const [match] = useRoute("/frame/:id");

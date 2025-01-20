@@ -6,6 +6,8 @@ import Player from "../../ShowRoom/Player";
 import WordPhysical from "./WordPhysics";
 import MonitorStaticPhysic from "../AboutMe/MonitorStaticPhysic";
 import Mobile from "../mobile";
+import file from "../../../assets/textures/venere.hdr";
+import { Environment } from "@react-three/drei";
 
 function Contact() {
   const words = useMemo(
@@ -47,6 +49,7 @@ function Contact() {
             {`^ ^ Projects ^ ^`}
           </MonitorStaticPhysic>
         </Physics>
+        <Environment files={file} background />
       </Canvas>
     </>
   );

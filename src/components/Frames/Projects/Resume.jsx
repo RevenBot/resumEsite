@@ -3,9 +3,10 @@ import { Physics, RigidBody } from "@react-three/rapier";
 import Player from "../../ShowRoom/Player";
 import { Canvas } from "@react-three/fiber";
 import PlanePhysics from "../../ShowRoom/PlanePhysics";
-import file from "../../../assets/textures/projects720p.hdr";
+import file from "../../../assets/textures/redplanet.hdr";
 import { Environment } from "@react-three/drei";
 import Mobile from "../mobile";
+import Helper from "../helper";
 
 const Resume = () => {
   const images = [
@@ -37,6 +38,7 @@ const Resume = () => {
           <Figures images={images} />
           <Player />
         </Physics>
+        <Helper />
         <Environment files={file} background />
       </Canvas>
     </>

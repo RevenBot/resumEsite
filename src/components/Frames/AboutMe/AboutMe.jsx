@@ -6,7 +6,7 @@ import { Physics, RigidBody } from "@react-three/rapier";
 import MonitorStaticPhysic from "./MonitorStaticPhysic";
 import PlanePhysics from "../../ShowRoom/PlanePhysics";
 import Player from "../../ShowRoom/Player";
-import file from "../../../assets/textures/about-me3d720p.hdr";
+import file from "../../../assets/textures/silver_and_gold_nebulae.hdr";
 import { Canvas } from "@react-three/fiber";
 import Mobile from "../mobile";
 

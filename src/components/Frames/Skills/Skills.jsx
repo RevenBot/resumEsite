@@ -1,6 +1,6 @@
 import { createRef, useState } from "react";
 import { Environment } from "@react-three/drei";
-import file from "../../../assets/textures/nebula720p.hdr";
+import file from "../../../assets/textures/nebula.hdr";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import PlanePhysics from "../../ShowRoom/PlanePhysics";

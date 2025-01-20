@@ -15,14 +15,15 @@ const PlanePhysics = () => {
     [],
   );
   return (
-    <RigidBody type="fixed" colliders="trimesh">
+    <RigidBody type="fixed" colliders="trimesh" includeInvisible>
       <mesh
         position={[0, 0, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
         material={material}
         receiveShadow
+        visible={false}
       >
-        <planeGeometry args={[100, 100]} />
+        <planeGeometry args={[1000, 1000]} />
       </mesh>
     </RigidBody>
   );

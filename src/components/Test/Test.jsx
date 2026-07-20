@@ -1,10 +1,14 @@
+import { Canvas } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
 import {
   Gltf,
   Environment,
   KeyboardControls,
 } from "@react-three/drei";
+import { Suspense } from "react";
 import Controller from "ecctrl";
+import WormholeSphere from "../Frames/WormholeSphere/WormholeSphere";
+import WormholeParticles from "../Frames/WormholeSphere/WormholeParticles";
 
 export default function Test() {
   const keyboardMap = [
@@ -16,7 +20,12 @@ export default function Test() {
     { name: "run", keys: ["Shift"] },
   ];
   return (
-        <Physics>
+    <Canvas camera={{ fov: 75, position: [0, 0, 500] }}>
+      <Suspense fallback={null}>
+        <WormholeSphere />
+      </Suspense>
+      <WormholeParticles />
+      <Physics>
         <Environment files="/night.hdr" ground={{ scale: 100 }} />
         <directionalLight
           intensity={0.7}
@@ -50,5 +59,6 @@ export default function Test() {
           </RigidBody>
         </Physics>
         </Physics>
+    </Canvas>
   );
 }

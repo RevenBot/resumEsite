@@ -9,6 +9,7 @@ import Player from "../../ShowRoom/Player";
 import file from "../../../assets/textures/silver_and_gold_nebulae.hdr";
 import { Canvas } from "@react-three/fiber";
 import Mobile from "../mobile";
+import Helper from "../helper";
 
 const AboutMe = () => {
   const { t, ready } = useTranslation("about-me", { useSuspense: false });
@@ -94,6 +95,7 @@ const AboutMe = () => {
           </Physics>
           <Environment files={file} background />
           <Preload all />
+          <Helper/>
         </Suspense>
       </Canvas>
     </>

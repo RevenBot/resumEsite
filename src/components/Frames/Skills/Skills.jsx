@@ -8,6 +8,7 @@ import Player from "../../ShowRoom/Player";
 import NodePhysical from "./NodePhysics";
 import { NodesPhysics } from "./NodesPhysics";
 import Mobile from "../mobile";
+import Helper from "../helper";
 
 function Skills() {
   const [
@@ -163,6 +164,7 @@ function Skills() {
           </NodesPhysics>
         </Physics>
         <Environment files={file} background />
+        <Helper/>
       </Canvas>
     </>
   );

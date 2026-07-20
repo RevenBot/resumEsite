@@ -8,6 +8,7 @@ import MonitorStaticPhysic from "../AboutMe/MonitorStaticPhysic";
 import Mobile from "../mobile";
 import file from "../../../assets/textures/venere.hdr";
 import { Environment } from "@react-three/drei";
+import Helper from "../helper";
 
 function Contact() {
   const words = useMemo(
@@ -50,6 +51,7 @@ function Contact() {
           </MonitorStaticPhysic>
         </Physics>
         <Environment files={file} background />
+        <Helper/>
       </Canvas>
     </>
   );

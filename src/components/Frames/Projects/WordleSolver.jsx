@@ -6,6 +6,7 @@ import PlanePhysics from "../../ShowRoom/PlanePhysics";
 import file from "../../../assets/textures/trantor.hdr";
 import { Environment } from "@react-three/drei";
 import Mobile from "../mobile";
+import Helper from "../helper";
 
 const WordleSolver = () => {
   const images = [
@@ -39,6 +40,7 @@ const WordleSolver = () => {
           <Player />
         </Physics>
         <Environment files={file} background />
+        <Helper/>
       </Canvas>
     </>
   );

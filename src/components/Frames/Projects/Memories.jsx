@@ -6,6 +6,7 @@ import PlanePhysics from "../../ShowRoom/PlanePhysics";
 import file from "../../../assets/textures/multi_nebulae.hdr";
 import { Environment } from "@react-three/drei";
 import Mobile from "../mobile";
+import Helper from "../helper";
 
 const Memories = () => {
   const images = [
@@ -44,6 +45,7 @@ const Memories = () => {
           <Player />
         </Physics>
         <Environment files={file} background />
+        <Helper />
       </Canvas>
     </>
   );

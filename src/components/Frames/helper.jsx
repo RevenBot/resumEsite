@@ -1,4 +1,4 @@
-import { Container, Image, Root, Text } from "@react-three/uikit";
+import { Container, Image, Root } from "@react-three/uikit";
 
 const Helper = () => {
   return (

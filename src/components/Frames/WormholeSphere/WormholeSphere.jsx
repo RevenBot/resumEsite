@@ -1,5 +1,6 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
 
 // ── 4D Simplex Noise (inlined from glsl-noise/simplex/4d) ──────────────────
 // Copyright (C) 2011 Ashima Arts. MIT License.
@@ -134,6 +135,7 @@ uniform float uNoiseScaleRed;
 uniform float uNoiseScaleGreen;
 uniform float uNoiseScaleBlue;
 uniform sampler2D uTexture;
+uniform float uTextureBlend;
 
 varying vec3 vNormal;
 
@@ -142,7 +144,18 @@ void main() {
   float red   = snoise(vec4(vNormal * uNoiseScaleRed   + 0.0, time)) * 0.5 + 0.5;
   float green = snoise(vec4(vNormal * uNoiseScaleGreen + 10.0, time)) * 0.5 + 0.5;
   float blue  = snoise(vec4(vNormal * uNoiseScaleBlue  + 20.0, time)) * 0.5 + 0.5;
-  gl_FragColor = vec4(red, green, blue, 1.0);
+  vec3 noiseColor = vec3(red, green, blue);
+
+  // Spherical UV mapping from surface normal for texture sampling.
+  // Projects the 3D normal onto a 2D sphere parameterization so the
+  // texture wraps naturally around the displaced icosahedron.
+  vec2 uv = vec2(
+    atan(vNormal.z, vNormal.x) / (2.0 * 3.14159265359) + 0.5,
+    asin(vNormal.y) / 3.14159265359 + 0.5
+  );
+  vec4 texColor = texture2D(uTexture, uv);
+
+  gl_FragColor = vec4(mix(noiseColor, texColor.rgb, uTextureBlend), 1.0);
 }
 `;
 
@@ -157,6 +170,7 @@ void main() {
  * @param {number} uNoiseScaleRed       - spatial noise scale for red channel (default 0.8)
  * @param {number} uNoiseScaleGreen     - spatial noise scale for green channel (default 0.8)
  * @param {number} uNoiseScaleBlue      - spatial noise scale for blue channel (default 0.8)
+ * @param {string} [texture]            - optional texture path; loaded via useTexture and blended with noise
  */
 export default function WormholeSphere({
   uTimeScaleVert = 0.3,
@@ -166,8 +180,14 @@ export default function WormholeSphere({
   uNoiseScaleRed = 0.8,
   uNoiseScaleGreen = 0.8,
   uNoiseScaleBlue = 0.8,
+  texture,
 }) {
   const materialRef = useRef();
+  // useTexture suspends while loading; called unconditionally so the hook
+  // rules are satisfied. When texture is undefined it returns undefined
+  // immediately without suspending.
+  const loadedTexture = useTexture(texture);
+  const hasTexture = !!loadedTexture;
 
   const uniforms = useMemo(
     () => ({
@@ -179,7 +199,8 @@ export default function WormholeSphere({
       uNoiseScaleRed: { value: uNoiseScaleRed },
       uNoiseScaleGreen: { value: uNoiseScaleGreen },
       uNoiseScaleBlue: { value: uNoiseScaleBlue },
-      uTexture: { value: null },
+      uTexture: { value: loadedTexture || null },
+      uTextureBlend: { value: hasTexture ? 0.5 : 0.0 },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -192,15 +213,17 @@ export default function WormholeSphere({
   });
 
   return (
-    <mesh>
-      <icosahedronGeometry args={[200, 16]} />
-      <shaderMaterial
-        ref={materialRef}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={uniforms}
-        side={2}
-      />
-    </mesh>
+    <Suspense fallback={null}>
+      <mesh>
+        <icosahedronGeometry args={[200, 16]} />
+        <shaderMaterial
+          ref={materialRef}
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={uniforms}
+          side={2}
+        />
+      </mesh>
+    </Suspense>
   );
 }

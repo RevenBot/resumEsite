@@ -1,6 +1,7 @@
 import { useRef, useMemo, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
+import { DataTexture, RGBAFormat, UnsignedByteType } from "three";
 
 // ── 4D Simplex Noise (inlined from glsl-noise/simplex/4d) ──────────────────
 // Copyright (C) 2011 Ashima Arts. MIT License.
@@ -159,48 +160,21 @@ void main() {
 }
 `;
 
-/**
- * WormholeSphere — an icosahedron sphere with 4D simplex noise vertex
- * displacement and RGB noise fragment coloring.
- *
- * @param {number} uTimeScaleVert       - animation speed for vertex displacement (default ~0.3)
- * @param {number} uNoiseScaleVert      - spatial noise scale for vertex displacement (default 1.0)
- * @param {number} uDisplacementScale   - amplitude of vertex displacement (default 0.3)
- * @param {number} uTimeScaleFrag       - animation speed for fragment coloring (default ~0.3)
- * @param {number} uNoiseScaleRed       - spatial noise scale for red channel (default 0.8)
- * @param {number} uNoiseScaleGreen     - spatial noise scale for green channel (default 0.8)
- * @param {number} uNoiseScaleBlue      - spatial noise scale for blue channel (default 0.8)
- * @param {string} [texture]            - optional texture path; loaded via useTexture and blended with noise
- */
-export default function WormholeSphere({
-  uTimeScaleVert = 0.3,
-  uNoiseScaleVert = 1.0,
-  uDisplacementScale = 0.3,
-  uTimeScaleFrag = 0.3,
-  uNoiseScaleRed = 0.8,
-  uNoiseScaleGreen = 0.8,
-  uNoiseScaleBlue = 0.8,
-  texture,
-}) {
+function WormholeSphereMesh({ texture, fallbackTexture, uniforms: passedUniforms }) {
   const materialRef = useRef();
-  // useTexture suspends while loading; called unconditionally so the hook
-  // rules are satisfied. When texture is undefined it returns undefined
-  // immediately without suspending.
-  const loadedTexture = useTexture(texture);
-  const hasTexture = !!loadedTexture;
 
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
-      uTimeScaleVert: { value: uTimeScaleVert },
-      uNoiseScaleVert: { value: uNoiseScaleVert },
-      uDisplacementScale: { value: uDisplacementScale },
-      uTimeScaleFrag: { value: uTimeScaleFrag },
-      uNoiseScaleRed: { value: uNoiseScaleRed },
-      uNoiseScaleGreen: { value: uNoiseScaleGreen },
-      uNoiseScaleBlue: { value: uNoiseScaleBlue },
-      uTexture: { value: loadedTexture || null },
-      uTextureBlend: { value: hasTexture ? 0.5 : 0.0 },
+      uTimeScaleVert: { value: passedUniforms.uTimeScaleVert },
+      uNoiseScaleVert: { value: passedUniforms.uNoiseScaleVert },
+      uDisplacementScale: { value: passedUniforms.uDisplacementScale },
+      uTimeScaleFrag: { value: passedUniforms.uTimeScaleFrag },
+      uNoiseScaleRed: { value: passedUniforms.uNoiseScaleRed },
+      uNoiseScaleGreen: { value: passedUniforms.uNoiseScaleGreen },
+      uNoiseScaleBlue: { value: passedUniforms.uNoiseScaleBlue },
+      uTexture: { value: texture ?? fallbackTexture },
+      uTextureBlend: { value: texture ? 0.5 : 0.0 },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -213,17 +187,76 @@ export default function WormholeSphere({
   });
 
   return (
+    <mesh>
+      <icosahedronGeometry args={[200, 16]} />
+      <shaderMaterial
+        ref={materialRef}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uniforms={uniforms}
+        side={2}
+      />
+    </mesh>
+  );
+}
+
+function WormholeSphereWithTexture({ texture, fallbackTexture, uniforms: passedUniforms }) {
+  const loadedTexture = useTexture(texture);
+  return (
+    <WormholeSphereMesh
+      texture={loadedTexture}
+      fallbackTexture={fallbackTexture}
+      uniforms={passedUniforms}
+    />
+  );
+}
+
+export default function WormholeSphere({
+  uTimeScaleVert = 0.3,
+  uNoiseScaleVert = 1.0,
+  uDisplacementScale = 0.3,
+  uTimeScaleFrag = 0.3,
+  uNoiseScaleRed = 0.8,
+  uNoiseScaleGreen = 0.8,
+  uNoiseScaleBlue = 0.8,
+  texture,
+}) {
+  // 1×1 opaque black fallback so texture2D(uTexture, uv) is always valid.
+  const fallbackTexture = useMemo(() => {
+    const data = new Uint8Array([0, 0, 0, 255]);
+    const tex = new DataTexture(data, 1, 1, RGBAFormat, UnsignedByteType);
+    tex.needsUpdate = true;
+    return tex;
+  }, []);
+
+  const passedUniforms = useMemo(
+    () => ({
+      uTimeScaleVert,
+      uNoiseScaleVert,
+      uDisplacementScale,
+      uTimeScaleFrag,
+      uNoiseScaleRed,
+      uNoiseScaleGreen,
+      uNoiseScaleBlue,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  return (
     <Suspense fallback={null}>
-      <mesh>
-        <icosahedronGeometry args={[200, 16]} />
-        <shaderMaterial
-          ref={materialRef}
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-          uniforms={uniforms}
-          side={2}
+      {texture ? (
+        <WormholeSphereWithTexture
+          texture={texture}
+          fallbackTexture={fallbackTexture}
+          uniforms={passedUniforms}
         />
-      </mesh>
+      ) : (
+        <WormholeSphereMesh
+          fallbackTexture={fallbackTexture}
+          uniforms={passedUniforms}
+        />
+      )}
     </Suspense>
   );
 }

@@ -3,14 +3,14 @@ import { useMemo, useRef } from "react";
 import { Object3D } from "three";
 
 function WormholeParticles({
-  count = 1000,
+  count = 5000,
   position = [0, 0, 0],
   radius = 220,
   color = "#8b5cf6",
   dummy = new Object3D(),
 }) {
   const mesh = useRef();
-  const particleCount = Math.min(count, 2000);
+  const particleCount = Math.min(count, 10000);
 
   const particles = useMemo(() => {
     const temp = [];

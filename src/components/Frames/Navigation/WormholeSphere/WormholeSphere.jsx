@@ -113,7 +113,6 @@ function WormholeSphereMesh({
   uDisplacementScale,
   metalness,
   roughness,
-  color,
   opacity,
 }) {
   const materialRef = useRef();
@@ -171,7 +170,7 @@ function WormholeSphereMesh({
       <icosahedronGeometry args={[radius, detail]} />
       <meshStandardMaterial
         ref={materialRef}
-        color={color}
+        color={"#000000"}
         metalness={metalness}
         roughness={roughness}
         transparent
@@ -190,7 +189,6 @@ export default function WormholeSphere({
   uDisplacementScale = 5,
   metalness = 1,
   roughness = 0.1,
-  color = "#ffffff",
   opacity = 0.9,
 }) {
   return (
@@ -203,7 +201,6 @@ export default function WormholeSphere({
         uDisplacementScale={uDisplacementScale}
         metalness={metalness}
         roughness={roughness}
-        color={color}
         opacity={opacity}
       />
     </Suspense>

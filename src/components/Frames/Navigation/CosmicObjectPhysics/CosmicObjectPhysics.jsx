@@ -3,15 +3,13 @@ import { Text, Billboard } from "@react-three/drei";
 import { useLocation } from "wouter";
 import WormholeSphere from "../WormholeSphere/WormholeSphere.jsx";
 import Glow from "../Glow/Glow.jsx"
-import WormholeParticles from "../WormholeSphere/WormholeParticles.jsx"
 import { Sparkles } from "@react-three/drei";
 
 export default function CosmicObjectPhysics({
   position = [0, 0, 0],
-  label = "Portal",
+  label = "Home",
   url = "/",
   external = false,
-  sphereColor = "#ffffff",
   glowColor = "#ffffff",
   scale = 1
 }) {
@@ -27,26 +25,39 @@ export default function CosmicObjectPhysics({
 
   return (
     <Billboard position={position} scale={scale}>
-    <RigidBody
-      type="fixed"
-      colliders="ball"
-      gravityScale={0}
-      onCollisionEnter={onCollisionEnter}
-    >
-      <WormholeSphere
-        radius={20}
-        detail={64}
-        uTimeScaleVert={0.4}
-        uNoiseScaleVert={1}
-        uDisplacementScale={0.5}
-        metalness={1}
-        roughness={0.1}
-        color={sphereColor}
-      />
-      <Text position={[0,10,0]} color="#ffffff">
-        {label}
-      </Text>
-    </RigidBody>
+      <RigidBody
+        type="fixed"
+        colliders="ball"
+        gravityScale={0}
+        onCollisionEnter={onCollisionEnter}
+      >
+        <WormholeSphere
+          radius={20}
+          detail={64}
+          uTimeScaleVert={0.4}
+          uNoiseScaleVert={1}
+          uDisplacementScale={0.5}
+          metalness={1}
+          roughness={0.1}
+        />
+        <Text
+          font="/Orbitron_Bold.woff"
+          position={[0, 22, 10]}
+          fontSize={10}
+          color="#050505"
+          outlineWidth={0.04}
+          outlineColor={glowColor}
+          letterSpacing={0.06}
+          anchorX="center"
+          anchorY="middle"
+        >
+          {label}
+          <meshBasicMaterial
+            color="#050505"
+            toneMapped={false}
+          />
+        </Text>
+      </RigidBody>
       <Glow color={glowColor} scale={50} alpha={1} />
       <Sparkles
         count={100}
@@ -55,7 +66,7 @@ export default function CosmicObjectPhysics({
         speed={1}
         color={"#ffffff"}
       />
-      
+
     </Billboard>
   );
 }

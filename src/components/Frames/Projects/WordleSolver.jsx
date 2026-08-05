@@ -7,6 +7,7 @@ import file from "../../../assets/textures/trantor.hdr";
 import { Environment } from "@react-three/drei";
 import Mobile from "../mobile";
 import Helper from "../helper";
+import CosmicObjectPhysics from "../../Navigation/CosmicObjectPhysics/CosmicObjectPhysics.jsx"
 
 const WordleSolver = () => {
   const images = [

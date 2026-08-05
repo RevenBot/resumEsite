@@ -23,33 +23,47 @@ const Scene = ({ objects }) => {
 
   const [hoverName, setName] = useState(null);
 
-  const objectSize = 1; // Dimensione di ogni oggetto
+  const objectSize = 5; // Dimensione di ogni oggetto
 
   const distributedObjects = useMemo(() => {
     const regions = {
       topLeft: { start: -90, end: 3 },
       topRight: { start: 18, end: 113 },
     };
+
     const regionPositions = {
       topLeft: [],
       topRight: [],
     };
 
     const generateRandomPosition = (range, existingPositions) => {
-      let position = { x: 0, y: 35, z: 100 };
-      let overlap;
-      do {
-        position.x =
-          Math.random() * (range.end - range.start - objectSize) + range.start;
-        overlap = existingPositions.some(
-          (pos) => Math.abs(pos - position.x) < objectSize,
+      const MAX_ATTEMPTS = 100;
+
+      const minX = range.start + objectSize / 2;
+      const maxX = range.end - objectSize / 2;
+
+      for (let i = 0; i < MAX_ATTEMPTS; i++) {
+        const position = {
+          x: Math.random() * (maxX - minX) + minX,
+          y: 35,
+          z: 100,
+        };
+
+        const overlap = existingPositions.some(
+          (pos) => Math.abs(pos.x - position.x) < objectSize,
         );
-      } while (overlap);
-      return position;
+
+        if (!overlap) {
+          return position;
+        }
+      }
+
+      throw new Error("Impossibile trovare una posizione libera.");
     };
 
     return objects.map((obj) => {
       const region = regions[obj.region];
+
       if (!region) {
         throw new Error(`Regione non valida: ${obj.region}`);
       }
@@ -59,7 +73,6 @@ const Scene = ({ objects }) => {
         regionPositions[obj.region],
       );
 
-      // Aggiungi la posizione alla lista di quelle occupate in questa regione
       regionPositions[obj.region].push(newPosition);
 
       return {
@@ -67,7 +80,8 @@ const Scene = ({ objects }) => {
         position: newPosition,
       };
     });
-  }, [objects]);
+  }, [objects, objectSize]);
+
 
   const OnPointerOver = (e, item) => {
     e.stopPropagation();

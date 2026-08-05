@@ -1,5 +1,5 @@
 import Figures from "./../../ShowRoom/Figures";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { Physics } from "@react-three/rapier";
 import Player from "../../ShowRoom/Player";
 import { Canvas } from "@react-three/fiber";
 import PlanePhysics from "../../ShowRoom/PlanePhysics";

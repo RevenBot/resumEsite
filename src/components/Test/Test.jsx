@@ -2,7 +2,6 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { Environment, useTexture } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import hdrFile from "../../assets/textures/trantor.hdr";
-import CosmicObjectPhysics from "../Navigation/CosmicObjectPhysics/CosmicObjectPhysics.jsx";
 import Player from "../ShowRoom/Player";
 import PlanePhysics from "../ShowRoom/PlanePhysics.jsx"
 import * as THREE from "three";
@@ -14,8 +13,8 @@ function ImagePlane() {
   const { gl } = useThree();
 
 
-  const meshWidth = 35;
-  const meshHeight = 15;
+  // const meshWidth = 35;
+  // const meshHeight = 15;
   console.log(gl.capabilities.maxTextureSize);
 
   useEffect(() => {

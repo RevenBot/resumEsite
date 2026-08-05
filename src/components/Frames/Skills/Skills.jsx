@@ -1,6 +1,6 @@
 import { createRef, useState } from "react";
 import { Environment } from "@react-three/drei";
-import file from "../../../assets/textures/nebula720p.hdr";
+import file from "../../../assets/textures/nebula.hdr";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import PlanePhysics from "../../ShowRoom/PlanePhysics";
@@ -8,6 +8,8 @@ import Player from "../../ShowRoom/Player";
 import NodePhysical from "./NodePhysics";
 import { NodesPhysics } from "./NodesPhysics";
 import Mobile from "../mobile";
+import Helper from "../helper";
+import CosmicObjectPhysics from "../../Navigation/CosmicObjectPhysics/CosmicObjectPhysics.jsx"
 
 function Skills() {
   const [
@@ -161,8 +163,27 @@ function Skills() {
               connectedTo={[]}
             />
           </NodesPhysics>
+          <CosmicObjectPhysics
+            position={[0, 2, 100]}
+            label="Home"
+            url="/"
+            glowColor="#2527a0"
+          />
+          <CosmicObjectPhysics
+            position={[-100, 2, 0]}
+            label="Contacts"
+            url="/page/contacts"
+            glowColor="#29b347"
+          />
+          <CosmicObjectPhysics
+            position={[100, 2, 0]}
+            label="About Me"
+            url="/page/about-me"
+            glowColor="#01c3f3"
+          />
         </Physics>
         <Environment files={file} background />
+        <Helper />
       </Canvas>
     </>
   );

@@ -130,7 +130,7 @@ const Board = ({ page, onClickBack }) => {
                 onClick={() => setLocation(`/page/${page.relativeUrl}/`)}
                 variant="outline"
               >
-                <Text color="white">3D</Text>
+                <Text color="white">3D Version</Text>
               </Button>
             </Container>
           </Container>

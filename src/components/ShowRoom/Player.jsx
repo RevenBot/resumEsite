@@ -50,7 +50,7 @@ const Player = () => {
               color={"#fff"}
               penumbra={1}
               intensity={2000}
-              distance={8}
+              distance={4}
               castShadow
               target={ref.current}
             />

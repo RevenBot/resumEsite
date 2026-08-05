@@ -9,6 +9,7 @@ import NodePhysical from "./NodePhysics";
 import { NodesPhysics } from "./NodesPhysics";
 import Mobile from "../mobile";
 import Helper from "../helper";
+import CosmicObjectPhysics from "../../Navigation/CosmicObjectPhysics/CosmicObjectPhysics.jsx"
 
 function Skills() {
   const [
@@ -162,9 +163,27 @@ function Skills() {
               connectedTo={[]}
             />
           </NodesPhysics>
+          <CosmicObjectPhysics
+            position={[0, 2, 100]}
+            label="Home"
+            url="/"
+            glowColor="#2527a0"
+          />
+          <CosmicObjectPhysics
+            position={[-100, 2, 0]}
+            label="Contacts"
+            url="/page/contacts"
+            glowColor="#29b347"
+          />
+          <CosmicObjectPhysics
+            position={[100, 2, 0]}
+            label="About Me"
+            url="/page/about-me"
+            glowColor="#01c3f3"
+          />
         </Physics>
         <Environment files={file} background />
-        <Helper/>
+        <Helper />
       </Canvas>
     </>
   );

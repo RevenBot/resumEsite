@@ -10,6 +10,7 @@ import file from "../../../assets/textures/silver_and_gold_nebulae.hdr";
 import { Canvas } from "@react-three/fiber";
 import Mobile from "../mobile";
 import Helper from "../helper";
+import CosmicObjectPhysics from "../../Navigation/CosmicObjectPhysics/CosmicObjectPhysics.jsx"
 
 const AboutMe = () => {
   const { t, ready } = useTranslation("about-me", { useSuspense: false });
@@ -56,14 +57,14 @@ const AboutMe = () => {
               </Text3D>
             </RigidBody>
             <MonitorStaticPhysic
-              position={[10, 0, 0]}
+              position={[11, 0, 0]}
               scale={1.2}
               invert={true}
             >
               {`:wq`}
             </MonitorStaticPhysic>
             <MonitorStaticPhysic
-              position={[13, 0, -1]}
+              position={[14, 0, -1]}
               scale={1.2}
               invert={true}
             >
@@ -91,11 +92,29 @@ const AboutMe = () => {
             <MonitorStaticPhysic position={[6, 0, -20]} scale={1.2}>
               {`GOOOOOOL`}
             </MonitorStaticPhysic>
+            <CosmicObjectPhysics
+              position={[0, 2, 100]}
+              label="Home"
+              url="/"
+              glowColor="#2527a0"
+            />
+            <CosmicObjectPhysics
+              position={[-100, 2, 0]}
+              label="Contacts"
+              url="/page/contacts"
+              glowColor="#29b347"
+            />
+            <CosmicObjectPhysics
+              position={[100, 2, 0]}
+              label="Skills"
+              url="/page/skills"
+              glowColor="#b63131"
+            />
             <Player />
           </Physics>
           <Environment files={file} background />
           <Preload all />
-          <Helper/>
+          <Helper />
         </Suspense>
       </Canvas>
     </>

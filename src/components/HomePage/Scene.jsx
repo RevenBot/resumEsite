@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import Book from "./Books/Book";
 import Library from "./Library";
 import useStoreHomePage from "../../context/homepage/store";
+import { useShallow } from "zustand/react/shallow";
 import Board from "./Board";
 import { Text } from "@react-three/drei";
 
@@ -19,7 +20,7 @@ const Scene = ({ objects }) => {
   // 95 / 5  = 19 * 4 = 76  facciamo 48 ? si
   //
 
-  const { pageId, updatePageId } = useStoreHomePage((state) => state);
+  const { pageId, updatePageId } = useStoreHomePage(useShallow((state) => state));
 
   const [hoverName, setName] = useState(null);
 

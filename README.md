@@ -14,12 +14,23 @@ A portfolio was created to showcase my projects and enhance my skills in React J
 
 ## Technologies
 Project is created with:
-* React version: 18.2.0
-* Vite version: 4.4.5
-* React-Three-Fiber version: 8.15.18
-* PrimeReact version: 10.5.1
-* Zustand version 4.5.2
-* Wouter 3.1.0
+* React version: ^19.2.8
+* Vite version: ^8.2.1
+* React-Three-Fiber version: ^9.7.0
+* @react-three/drei version: ^10.7.8
+* @react-three/rapier version: ^2.2.0
+* @react-three/uikit version: ^1.0.75
+* ecctrl version: ^2.0.0
+* three version: ^0.185.1
+* Zustand version: 5.0.4
+* i18next version: ^26.3.6
+* react-i18next version: ^17.0.0
+* i18next-browser-languagedetector version: ^8.0.5
+* i18next-http-backend version: ^4.0.1
+* PrimeReact version: ^11.1.0
+* primeflex version: ^3.3.1
+* primeicons version: ^6.0.1
+* Wouter version: ^3.1.0
 ## Setup
 
 Clone my resumEsite

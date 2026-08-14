@@ -1,15 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
+import { PrimeReactProvider } from "@primereact/core";
+import Lara from "@primeuix/themes/lara";
 import "./index.css";
-import { PrimeReactProvider } from "primereact/api";
-import "primeicons/primeicons.css"; // This imports primeicons css from primeicons module
-import "../node_modules/primeflex/primeflex.css"; // This imports primeflex css from primeflex module
+import "primeicons/primeicons.css";
+import "../node_modules/primeflex/primeflex.css";
 import "./i18n.js";
+
+const primereact = {
+  theme: {
+    preset: Lara,
+    options: {
+      darkModeSelector: ".my-app-dark",
+    },
+  },
+};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <PrimeReactProvider>
+    <PrimeReactProvider {...primereact}>
       <App />
     </PrimeReactProvider>
   </React.StrictMode>,

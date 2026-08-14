@@ -5,6 +5,7 @@ import {
   TerminalContextProvider,
 } from "react-terminal";
 import useStore from "../../../context/mode/store";
+import { useShallow } from "zustand/react/shallow";
 import "./Terminal.css";
 import Help from "./HelpCommand";
 import ModeHelp from "./ModeHelp";
@@ -12,13 +13,13 @@ import InitCommand from "./InitCommand";
 import GoToHelp from "./GoToHelp";
 import { useLocation } from "wouter";
 import TutoCommand from "./TutoCommand";
-import { Accordion, AccordionTab } from "primereact/accordion";
+import { Accordion } from "@primereact/ui/accordion";
 
 function Terminal() {
   const { setBufferedContent, setTemporaryContent } =
     React.useContext(TerminalContext);
 
-  const { updateMode, switchMode } = useStore((state) => state);
+  const { updateMode, switchMode } = useStore(useShallow((state) => state));
 
   const [, setLocation] = useLocation();
 
@@ -119,9 +120,13 @@ function Terminal() {
 
   return (
     <div className="absolute xl:top-0 xl:left-0 lg:top-0 lg:left-0 md:top-0 sm:top-0 top-0 sm:text-xs xl:w-4 lg:w-3 sm:w-12 w-12 z-1 h-15rem max-h-full">
-      <Accordion activeIndex={0}>
-        <AccordionTab contentStyle={{ padding: 0 }} header="Terminal">
-          <div className="z-1 h-15rem max-h-full">
+      <Accordion.Root defaultValue="terminal">
+        <Accordion.Panel value="terminal">
+          <Accordion.Header>
+            <Accordion.Trigger>Terminal</Accordion.Trigger>
+          </Accordion.Header>
+          <Accordion.Content pt={{ root: { style: { padding: 0 } } }}>
+            <div className="z-1 h-15rem max-h-full">
             <ReactTerminal
               showControlBar={false}
               showControlButtons={false}
@@ -145,8 +150,9 @@ function Terminal() {
               }}
             />
           </div>
-        </AccordionTab>
-      </Accordion>
+          </Accordion.Content>
+        </Accordion.Panel>
+      </Accordion.Root>
     </div>
   );
 }

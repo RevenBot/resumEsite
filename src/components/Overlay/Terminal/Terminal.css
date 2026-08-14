@@ -3,3 +3,9 @@
     font-size: 0.75rem !important;
   }
 }
+.p-accordion-content {
+  padding: 0;
+}
+.p-accordion .p-accordion-header .p-accordion-header-link {
+  background-color: var(--highlight-bg);
+}

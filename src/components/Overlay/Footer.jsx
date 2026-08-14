@@ -15,7 +15,11 @@ function Footer() {
             color: "var(--highlight-text-color)",
           }}
         >
-          <img src="https://skillicons.dev/icons?i=github" alt="repo" />
+          <img
+            width={"30px"}
+            src="https://skillicons.dev/icons?i=github"
+            alt="repo"
+          />
         </a>
         <div>06/03/2024</div>
       </div>

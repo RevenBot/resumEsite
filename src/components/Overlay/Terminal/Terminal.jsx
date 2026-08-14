@@ -12,6 +12,7 @@ import InitCommand from "./InitCommand";
 import GoToHelp from "./GoToHelp";
 import { useLocation } from "wouter";
 import TutoCommand from "./TutoCommand";
+import { Accordion, AccordionTab } from "primereact/accordion";
 
 function Terminal() {
   const { setBufferedContent, setTemporaryContent } =
@@ -118,28 +119,34 @@ function Terminal() {
 
   return (
     <div className="absolute xl:top-0 xl:left-0 lg:top-0 lg:left-0 md:top-0 sm:top-0 top-0 sm:text-xs xl:w-4 lg:w-3 sm:w-12 w-12 z-1 h-15rem max-h-full">
-      <ReactTerminal
-        showControlBar={false}
-        showControlButtons={false}
-        themes={{
-          "my-custom-theme": {
-            themeBGColor: "var(--highlight-bg)",
-            themePromptColor: "var(--green-700)",
-            themeColor: "var(--highlight-text-color)",
-          },
-        }}
-        theme="my-custom-theme"
-        welcomeMessage={welcomeMessage}
-        commands={commands}
-        prompt={"➜"}
-        defaultHandler={(command) => {
-          return (
-            <div style={{ lineBreak: "anywhere" }}>
-              {command}: command not found
-            </div>
-          );
-        }}
-      />
+      <Accordion activeIndex={0}>
+        <AccordionTab contentStyle={{ padding: 0 }} header="Terminal">
+          <div className="z-1 h-15rem max-h-full">
+            <ReactTerminal
+              showControlBar={false}
+              showControlButtons={false}
+              themes={{
+                "my-custom-theme": {
+                  themeBGColor: "var(--highlight-bg)",
+                  themePromptColor: "var(--green-700)",
+                  themeColor: "var(--highlight-text-color)",
+                },
+              }}
+              theme="my-custom-theme"
+              welcomeMessage={welcomeMessage}
+              commands={commands}
+              prompt={"➜"}
+              defaultHandler={(command) => {
+                return (
+                  <div style={{ lineBreak: "anywhere" }}>
+                    {command}: command not found
+                  </div>
+                );
+              }}
+            />
+          </div>
+        </AccordionTab>
+      </Accordion>
     </div>
   );
 }

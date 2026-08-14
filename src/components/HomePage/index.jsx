@@ -17,6 +17,7 @@ const HomePage = () => {
       legacy
       dpr={1}
       camera={{ fov: 110, position: [0, 50, 160] }}
+      style={{ cursor: "none" }}
     >
       <PresentationControls
         cursor={false}

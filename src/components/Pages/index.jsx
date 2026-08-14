@@ -16,8 +16,7 @@ const pages = [
     bookType: "oldbook1",
     region: "topLeft",
     stringLocalize: "skills",
-    imageUrl:
-      "https://skillicons.dev/icons?i=bash,cs,css,debian,discord,django,docker,dotnet,git,github,go,html,java,js,linux,mysql,neovim,netlify,postgres,postman,py,react,threejs,ts,vim,visualstudio,vite,vscode",
+    imageUrl: "/img/homepage/skills.png",
     linkButton: null,
   },
   {

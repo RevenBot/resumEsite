@@ -3,7 +3,7 @@ import Book from "./Books/Book";
 import Library from "./Library";
 import useStoreHomePage from "../../context/homepage/store";
 import Board from "./Board";
-import { Text, useCursor } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 
 const Scene = ({ objects }) => {
   // first left top -90 135 110
@@ -24,8 +24,6 @@ const Scene = ({ objects }) => {
   const [hoverName, setName] = useState(null);
 
   const objectSize = 1; // Dimensione di ogni oggetto
-  const [hovered, hover] = useState(false);
-  useCursor(hovered, "pointer");
 
   const distributedObjects = useMemo(() => {
     const regions = {
@@ -74,11 +72,9 @@ const Scene = ({ objects }) => {
   const OnPointerOver = (e, item) => {
     e.stopPropagation();
     setName(item.name);
-    hover(true);
   };
   const OnPointerOut = (e) => {
     e.stopPropagation();
-    hover(false);
     setName(null);
   };
 
@@ -93,8 +89,12 @@ const Scene = ({ objects }) => {
         <Book
           key={item.id}
           bookType={item.bookType}
+          bookName={item.name}
           position={[item.position.x, item.position.y, item.position.z]}
-          onClick={(e) => { updatePageId(item) ; e.stopPropagation();}}
+          onClick={(e) => {
+            updatePageId(item);
+            e.stopPropagation();
+          }}
           onPointerEnter={(e) => OnPointerOver(e, item)}
           onPointerLeave={(e) => OnPointerOut(e)}
         />

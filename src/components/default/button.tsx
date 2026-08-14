@@ -4,6 +4,7 @@ import {
   withOpacity,
 } from '@react-three/uikit'
 import React, { ReactNode, forwardRef } from 'react'
+import { ColorRepresentation } from 'three'
 import { borderRadius, colors } from './theme.js'
 
 const buttonVariants = {
@@ -97,8 +98,8 @@ export const Button = forwardRef(
         justifyContent="center"
         {...containerProps}
         {...sizeProps}
-        borderColor={disabled && containerProps?.borderColor ? withOpacity(containerProps.borderColor as any, 0.5) : containerProps?.borderColor}
-        backgroundColor={disabled && containerProps?.backgroundColor ? withOpacity(containerProps.backgroundColor as any, 0.5) : containerProps?.backgroundColor}
+        borderColor={disabled && containerProps?.borderColor ? withOpacity(containerProps.borderColor as ColorRepresentation, 0.5) : containerProps?.borderColor}
+        backgroundColor={disabled && containerProps?.backgroundColor ? withOpacity(containerProps.backgroundColor as ColorRepresentation, 0.5) : containerProps?.backgroundColor}
         cursor={disabled ? undefined : 'pointer'}
         flexDirection="row"
         hover={{

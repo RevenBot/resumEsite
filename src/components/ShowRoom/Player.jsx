@@ -1,7 +1,7 @@
 import { Gltf, KeyboardControls, SpotLight } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
-import Controller from "ecctrl";
+import { Ecctrl } from "ecctrl";
 import { Suspense } from "react";
 import { useRef } from "react";
 
@@ -28,12 +28,10 @@ const Player = () => {
     <KeyboardControls map={keyboardMap}>
       <group position={[0, 10, 10]}>
         <Suspense fallback={null}>
-          <Controller maxVelLimit={5}>
+          <Ecctrl maxVelLimit={5}>
             <mesh position={[0, -1, 4]} ref={ref}></mesh>
             <CuboidCollider
               args={[1, 1, 1]}
-              blockRotations={true} // Blocca tutte le rotazioni
-              lockTranslations={[true, true, false]}
               mass={0.2}
             />
             <Gltf
@@ -54,7 +52,7 @@ const Player = () => {
               castShadow
               target={ref.current}
             />
-          </Controller>
+          </Ecctrl>
         </Suspense>
       </group>
     </KeyboardControls>

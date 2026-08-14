@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useState } from "react";
 import { MathUtils, Vector3 } from "three";
-import { Container, Image, Root, Text } from "@react-three/uikit";
+import { Container, Image, Text } from "@react-three/uikit";
 import { Button } from "../default/button";
 import { useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
@@ -51,7 +51,7 @@ const Board = ({ page, onClickBack }) => {
         position={isMobile ? [-200, -300, -500] : [-700, 150, -500]}
         rotation={[0, Math.PI / 4, 0]}
       >
-        <Root pixelSize={2} sizeX={200} sizeY={800} flexDirection="row">
+        <Container pixelSize={2} sizeX={200} sizeY={800} flexDirection="row">
           <Container
             flexDirection="row"
             alignItems="center"
@@ -62,10 +62,10 @@ const Board = ({ page, onClickBack }) => {
               <Text color="white">{tra("back")}</Text>
             </Button>
           </Container>
-        </Root>
+        </Container>
       </mesh>
       <mesh position={[0, 150, -500]}>
-        <Root pixelSize={6} sizeX={1200} sizeY={800} flexDirection="row">
+        <Container pixelSize={6} sizeX={1200} sizeY={800} flexDirection="row">
           <Container
             borderWidth={15}
             borderColor="#333"
@@ -106,16 +106,17 @@ const Board = ({ page, onClickBack }) => {
               </Container>
             )}
           </Container>
-        </Root>
+        </Container>
       </mesh>
       <mesh
         position={isMobile ? [300, -300, -430] : [800, 150, -500]}
         rotation={[0, (7 * Math.PI) / 4, 0]}
       >
-        <Root pixelSize={2} sizeX={200} sizeY={800} flexDirection="row">
+        <Container pixelSize={2} sizeX={200} sizeY={800} flexDirection="row">
           <Container
             flexDirection="row"
             alignItems="center"
+            justifyItems="center"
             justifyContent="space-between"
             flexGrow={1}
           >
@@ -134,7 +135,7 @@ const Board = ({ page, onClickBack }) => {
               </Button>
             </Container>
           </Container>
-        </Root>
+        </Container>
       </mesh>
     </>
   );

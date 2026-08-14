@@ -30,7 +30,7 @@ const NodePhysical = forwardRef(
     );
 
     const onCollision = (_) => {
-      setPos(_.rigidBody?.translation());
+      setPos(_.other.rigidBody?.translation());
       set((nodes) => [...nodes, state]);
     };
 
@@ -55,7 +55,7 @@ const NodePhysical = forwardRef(
       <RigidBody
         gravityScale={0}
         lockRotations={true} // Blocca tutte le rotazioni
-        lockTranslations={[false, true, false]}
+        enabledTranslations={[false, true, false]}
         type="dynamic"
         colliders="ball"
         mass={0}

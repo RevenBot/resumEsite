@@ -1,4 +1,4 @@
-import { EcctrlJoystick } from "ecctrl";
+import { Joystick } from "ecctrl/input";
 import { useEffect, useState } from "react";
 
 const Mobile = () => {
@@ -21,7 +21,7 @@ const Mobile = () => {
       window.removeEventListener("resize", handleResize);
     };
   });
-  if (isMobile) return <EcctrlJoystick />;
+  if (isMobile) return <Joystick />;
   else null;
 };
 

@@ -23,7 +23,7 @@ function ImagePlane() {
     texture.magFilter = THREE.LinearFilter;
     texture.anisotropy = gl.capabilities.getMaxAnisotropy();
     texture.needsUpdate = true;
-  }, [texture]);
+  }, [texture, gl.capabilities]);
 
   return (
     <mesh>

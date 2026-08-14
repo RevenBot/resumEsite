@@ -1,9 +1,9 @@
-import { Container, Image, Root } from "@react-three/uikit";
+import { Container, Image } from "@react-three/uikit";
 
 const Helper = () => {
   return (
     <mesh position={[0, 7, 20]} rotation={[0, Math.PI, 0]}>
-      <Root pixelRatio={6} sizeX={15} sizeY={7} flexDirection="row">
+      <Container pixelSize={6} sizeX={15} sizeY={7} flexDirection="row">
         <Container
           flexDirection="column"
           alignItems="center"
@@ -14,7 +14,7 @@ const Helper = () => {
             <Image width={1400} src={"/img/projects/wasd_controls.png?url"} />
           </Container>
         </Container>
-      </Root>
+      </Container>
     </mesh>
   );
 };

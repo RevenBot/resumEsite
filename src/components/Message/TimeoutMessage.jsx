@@ -1,14 +1,13 @@
-import { Button } from "@primereact/ui/button";
-import { Dialog } from "@primereact/ui/dialog";
+import { Button } from "primereact/button";
+import { Dialog } from "primereact/dialog";
 import { useEffect, useRef, useState } from "react";
 import useStore from "../../context/mode/store";
-import { useShallow } from "zustand/react/shallow";
 import { useTranslation } from "react-i18next";
 
 const TimeoutMessage = () => {
   const [visible, setVisible] = useState(false);
   const timeoutId = useRef(null);
-  const { caosMode, updateMode } = useStore(useShallow((state) => state));
+  const { caosMode, updateMode } = useStore((state) => state);
   const [position] = useState("top-right");
   const { t } = useTranslation("message");
 
@@ -19,10 +18,12 @@ const TimeoutMessage = () => {
 
   const footerContent = (
     <div>
-      <Button onClick={OnClick} autoFocus>
-        <i className="pi pi-angle-double-right" />
-        Resume
-      </Button>
+      <Button
+        label="Resume"
+        icon="pi pi-angle-double-right"
+        onClick={OnClick}
+        autoFocus
+      />
     </div>
   );
 
@@ -37,22 +38,20 @@ const TimeoutMessage = () => {
 
   if (caosMode)
     return (
-      <Dialog.Root
-        open={visible}
+      <Dialog
+        visible={visible}
         position={position}
         style={{ width: "20vw" }}
-        onOpenChange={() => {
+        onHide={() => {
           if (!visible) return;
           setVisible(false);
         }}
         draggable={false}
         resizable={false}
+        footer={footerContent}
       >
-        <Dialog.Content>
-          <p className="m-0">{t("timeout-message")}</p>
-        </Dialog.Content>
-        <Dialog.Footer>{footerContent}</Dialog.Footer>
-      </Dialog.Root>
+        <p className="m-0">{t("timeout-message")}</p>
+      </Dialog>
     );
 };
 

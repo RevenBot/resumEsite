@@ -27,7 +27,7 @@ Project is created with:
 * react-i18next version: ^17.0.0
 * i18next-browser-languagedetector version: ^8.0.5
 * i18next-http-backend version: ^4.0.1
-* PrimeReact version: ^11.1.0
+* PrimeReact version: ^10.5.1
 * primeflex version: ^3.3.1
 * primeicons version: ^6.0.1
 * Wouter version: ^3.1.0

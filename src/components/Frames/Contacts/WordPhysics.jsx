@@ -7,7 +7,7 @@ import { Color } from "three";
 function WordPhysical({ wordData }) {
   const color = new Color();
   const fontProps = {
-    font: "/Inter_Medium_Regular.json?url",
+    font: "/Inter_Medium_Regular.json",
     fontSize: 10,
     letterSpacing: -0.05,
     lineHeight: 1,

@@ -19,7 +19,7 @@ function Word({ children }) {
   );
 
   const fontProps = {
-    font: "/Inter_Medium_Regular.json?url",
+    font: "/Inter_Medium_Regular.json",
     fontSize: 2.5,
     letterSpacing: -0.05,
     lineHeight: 1,

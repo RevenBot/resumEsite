@@ -14,17 +14,17 @@ const Resume = () => {
     {
       position: [7, 0, -2],
       rotation: [0, (11 * Math.PI) / 6, 0],
-      url: "/img/projects/resume/caos.png?url",
+      url: "/img/projects/resume/caos.png",
     },
     {
       position: [-7, 0, -2],
       rotation: [0, -(11 * Math.PI) / 6, 0],
-      url: "/img/projects/resume/carousel.png?url",
+      url: "/img/projects/resume/carousel.png",
     },
     {
       position: [0, 0, -8],
       rotation: [0, 0, 0],
-      url: "/img/projects/resume/frame.png?url",
+      url: "/img/projects/resume/frame.png",
     },
   ];
   return (

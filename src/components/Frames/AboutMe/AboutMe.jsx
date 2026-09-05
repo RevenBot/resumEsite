@@ -51,7 +51,7 @@ const AboutMe = () => {
                 lineHeight={0.5}
                 receiveShadow
                 position={[-2, 4, 0]}
-                font={"/Inter_Medium_Regular.json?url"}
+                font={"/Inter_Medium_Regular.json"}
               >
                 {ready && t("phrase")}
               </Text3D>
@@ -81,7 +81,7 @@ const AboutMe = () => {
                 position={[1, 6, -10]}
                 scale={0.7}
                 material={material}
-                font={"/Inter_Medium_Regular.json?url"}
+                font={"/Inter_Medium_Regular.json"}
               >
                 JUNIOR
               </Text3D>

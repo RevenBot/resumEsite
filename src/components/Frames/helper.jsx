@@ -11,7 +11,7 @@ const Helper = () => {
           flexGrow={4}
         >
           <Container flexDirection="column" gap={4}>
-            <Image width={1400} src={"/img/projects/wasd_controls.png?url"} />
+            <Image width={1400} src={"/img/projects/wasd_controls.png"} />
           </Container>
         </Container>
       </Container>

@@ -97,9 +97,19 @@ const Scene = ({ objects }) => {
     <group>
       <Library />
       <Board page={pageId} onClickBack={() => updatePageId(null)} />
-      <Text position={[15, 0, 130]} scale={10}>
-        {hoverName}
-      </Text>
+        <Text
+        font="/Orbitron_Bold.woff"
+        position={[15, 0, 130]} 
+        fontSize={15}
+        color="#fff"
+        outlineWidth={0.6}
+        outlineColor="#800000"
+        letterSpacing={0.06}
+        anchorX="center"
+        anchorY="middle">
+          {hoverName}
+        </Text>
+
       {distributedObjects.map((item) => (
         <Book
           key={item.id}

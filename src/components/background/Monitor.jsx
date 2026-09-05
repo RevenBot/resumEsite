@@ -93,7 +93,7 @@ function ScreenText({ invert, x = 1, y = 1.1, children, ...props }) {
 }
 
 function Screen({ frame, panel, material, children, ...props }) {
-  const { nodes } = useGLTF("/computers_1-transformed.glb?url");
+  const { nodes } = useGLTF("/computers_1-transformed.glb");
   return (
     <group {...props}>
       <mesh

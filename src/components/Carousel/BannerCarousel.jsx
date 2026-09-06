@@ -9,13 +9,14 @@ import { useRef } from "react";
 import { DoubleSide, RepeatWrapping } from "three";
 import "../utils/util.js";
 import useStore from "../../context/banner/store.js";
+import { useShallow } from "zustand/react/shallow";
 import { useTranslation } from "react-i18next";
 
 function Banner(props) {
   const ref = useRef();
   const scroll = useScroll();
   const { t } = useTranslation("carousel");
-  const { bannerMessage } = useStore((state) => state);
+  const { bannerMessage } = useStore(useShallow((state) => state));
 
   useFrame((state, delta) => {
     ref.current.material.time.value += Math.abs(scroll.delta) * 4;

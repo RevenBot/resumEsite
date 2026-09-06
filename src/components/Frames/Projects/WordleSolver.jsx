@@ -14,17 +14,17 @@ const WordleSolver = () => {
     {
       position: [7, 0, -2],
       rotation: [0, (11 * Math.PI) / 6, 0],
-      url: "/img/projects/wordle-solver/main.png?url",
+      url: "/img/projects/wordle-solver/main.png",
     },
     {
       position: [-7, 0, -2],
       rotation: [0, -(11 * Math.PI) / 6, 0],
-      url: "/img/projects/wordle-solver/solver.png?url",
+      url: "/img/projects/wordle-solver/solver.png",
     },
     {
       position: [0, 0, -8],
       rotation: [0, 0, 0],
-      url: "/img/projects/wordle-solver/results.png?url",
+      url: "/img/projects/wordle-solver/results.png",
     },
   ];
 

@@ -14,22 +14,22 @@ const Memories = () => {
     {
       position: [7, 0, -2],
       rotation: [0, (11 * Math.PI) / 6, 0],
-      url: "/img/projects/memories/home.png?url",
+      url: "/img/projects/memories/home.png",
     },
     {
       position: [-7, 0, -2],
       rotation: [0, -(11 * Math.PI) / 6, 0],
-      url: "/img/projects/memories/index.png?url",
+      url: "/img/projects/memories/index.png",
     },
     {
       position: [4, 0, -8],
       rotation: [0, 0, 0],
-      url: "/img/projects/memories/profile.png?url",
+      url: "/img/projects/memories/profile.png",
     },
     {
       position: [-4, 0, -8],
       rotation: [0, 0, 0],
-      url: "/img/projects/memories/sign-in.png?url",
+      url: "/img/projects/memories/sign-in.png",
     },
   ];
 

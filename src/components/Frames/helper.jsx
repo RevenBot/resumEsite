@@ -1,20 +1,14 @@
-import { Container, Image, Root } from "@react-three/uikit";
+import { useTexture } from "@react-three/drei";
 
 const Helper = () => {
+  const texture = useTexture("/img/projects/wasd_controls.png");
+  const aspect = texture.image
+    ? texture.image.width / texture.image.height
+    : 1;
   return (
     <mesh position={[0, 7, 20]} rotation={[0, Math.PI, 0]}>
-      <Root pixelRatio={6} sizeX={15} sizeY={7} flexDirection="row">
-        <Container
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="space-between"
-          flexGrow={4}
-        >
-          <Container flexDirection="column" gap={4}>
-            <Image width={1400} src={"/img/projects/wasd_controls.png?url"} />
-          </Container>
-        </Container>
-      </Root>
+      <planeGeometry args={[15, 15 / aspect]} />
+      <meshBasicMaterial map={texture} toneMapped={false} transparent />
     </mesh>
   );
 };

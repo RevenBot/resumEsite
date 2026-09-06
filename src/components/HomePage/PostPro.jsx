@@ -1,14 +1,16 @@
 import { extend } from "@react-three/fiber";
-import { FilmPass, WaterPass, UnrealBloomPass, LUTPass } from "three-stdlib";
+import { WaterPass, UnrealBloomPass, LUTPass } from "three-stdlib";
+import { FilmPass } from "three/addons/postprocessing/FilmPass.js";
 import { Effects } from "@react-three/drei";
+import { Vector2, UnsignedByteType, SRGBColorSpace } from "three";
 
 extend({ WaterPass, UnrealBloomPass, FilmPass, LUTPass });
 
 function Postpro() {
   return (
-    <Effects disableGamma>
-      <filmPass args={[0.2, 0.5, 1500, false]} />
-      <unrealBloomPass args={[undefined, 0.7, 1, 0]} />
+    <Effects disableGamma type={UnsignedByteType} colorSpace={SRGBColorSpace}>
+      <filmPass args={[0.5, false]} />
+      <unrealBloomPass args={[new Vector2(256, 256), 0.7, 1, 100]} />
     </Effects>
   );
 }

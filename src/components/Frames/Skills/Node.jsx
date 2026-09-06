@@ -36,7 +36,7 @@ const Node = forwardRef(
     const [hovered, setHovered] = useState(false);
 
     const fontProps = {
-      font: "/Inter_Medium_Regular.json?url",
+      font: "/Inter_Medium_Regular.json",
       fontSize: 1,
       letterSpacing: -0.09,
       lineHeight: 0.6,

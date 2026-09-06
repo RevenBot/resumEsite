@@ -1,17 +1,16 @@
 import { useContext, useState } from "react";
+import { Dropdown } from "primereact/dropdown";
 import { PrimeReactContext } from "primereact/api";
 import { useTranslation } from "react-i18next";
-import { Dropdown } from "primereact/dropdown";
-
-//Use in a component
 
 const ThemeSwitcher = () => {
   const [iconClassName, setIconClassName] = useState("pi-moon");
-  const { changeTheme } = useContext(PrimeReactContext);
   const [theme, setTheme] = useState("dark");
+  const { changeTheme } = useContext(PrimeReactContext);
 
   const { i18n } = useTranslation();
   const [selectedLang, setSelectedLang] = useState(i18n.language);
+
   const changeMyTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     changeTheme(

@@ -6,7 +6,7 @@ import { Color } from "three";
 function Word({ link, children, ...props }) {
   const color = new Color();
   const fontProps = {
-    font: "/Inter_Medium_Regular.json?url",
+    font: "/Inter_Medium_Regular.json",
     fontSize: 0.5,
     letterSpacing: -0.05,
     lineHeight: 1,

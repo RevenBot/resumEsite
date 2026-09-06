@@ -12,9 +12,6 @@ const HomePage = () => {
   const p = useMemo(() => pages, []);
   return (
     <Canvas
-      linear
-      flat
-      legacy
       dpr={1}
       camera={{ fov: 110, position: [0, 50, 160] }}
       style={{ cursor: "none" }}
@@ -22,8 +19,7 @@ const HomePage = () => {
       <PresentationControls
         cursor={false}
         global
-        config={{ mass: 2, tension: 500 }}
-        snap={{ mass: 4, tension: 1500 }}
+        snap={0.5}
         rotation={[0, 0, 0]}
         polar={[-Math.PI / 3, Math.PI / 3]}
         azimuth={[-Math.PI / 1.4, Math.PI / 2]}

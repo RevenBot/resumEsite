@@ -38,4 +38,10 @@ export default [
       "no-useless-assignment": "off",
     },
   },
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ];

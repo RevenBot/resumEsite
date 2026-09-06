@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 10",
     "preview": "vite preview",
+    "check-console": "node scripts/check-console-errors.js",
     "predeploy": "vite build",
     "deploy": "gh-pages -d dist"
   },
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.46.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",

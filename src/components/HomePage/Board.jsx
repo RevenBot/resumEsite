@@ -1,7 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useState } from "react";
 import { MathUtils, Vector3 } from "three";
-import { Container, Image, Text } from "@react-three/uikit";
+import { Container, Text } from "@react-three/uikit";
+import MeshImage from "../Frames/MeshImage";
 import { Button } from "../default/button";
 import { useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
@@ -89,11 +90,6 @@ const Board = ({ page, onClickBack }) => {
                 </Text>
               </Container>
             )}
-            {page?.imageUrl != null && (
-              <Container flexDirection="column" gap={4}>
-                <Image width={150} src={page?.imageUrl} />
-              </Container>
-            )}
             {page?.linkButton != null && (
               <Container flexDirection="column" gap={4}>
                 <Button
@@ -107,6 +103,13 @@ const Board = ({ page, onClickBack }) => {
             )}
           </Container>
         </Container>
+        {page?.imageUrl != null && (
+          <MeshImage
+            src={page?.imageUrl}
+            width={25}
+            position={[0, 0, 0.1]}
+          />
+        )}
       </mesh>
       <mesh
         position={isMobile ? [300, -300, -430] : [800, 150, -500]}

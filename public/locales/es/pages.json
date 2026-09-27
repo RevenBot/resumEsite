@@ -12,5 +12,7 @@
   "contacts": "Interesado en mi trabajo? Contactame!",
   "project-memories" : "Memories es un sitio para compartir recuerdos de animales u otras categorias. Desarrollado con Django, utiliza SQLite para la base de datos, Bootstrap para el diseño responsivo y JavaScript para la interactividad.",
   "project-wordlesolver" : "Worldle Solver es una aplicacion desarrollada con .NET MAUI Blazor para resolver el juego Wordle. Utiliza algoritmos logicos y una interfaz intuitiva para sugerir posibles soluciones segun tu progreso.",
-  "project-resume" : "Resume es un sitio web de portafolio desarrollado con React.js y React Three Fiber para mostrar experiencias, habilidades y proyectos de manera interactiva. Integra graficos 3D para una experiencia moderna y atractiva."
+  "project-resume" : "Resume es un sitio web de portafolio desarrollado con React.js y React Three Fiber para mostrar experiencias, habilidades y proyectos de manera interactiva. Integra graficos 3D para una experiencia moderna y atractiva.",
+  "toggle2d": "Entrar en 2D",
+  "toggle3d": "Entrar en 3D"
 }

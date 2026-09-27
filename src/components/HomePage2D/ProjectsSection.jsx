@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import pages from "../Pages";
 
-const projectPages = pages.filter((page) => page.linkButton);
+const projectPages = pages.filter((page) => page.bookType === "book");
 
 const projectImages = {
   "project-memories": "/img/projects/memories/home.png",

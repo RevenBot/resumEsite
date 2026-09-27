@@ -7,13 +7,11 @@ import Scene from "./Scene";
 import Astronaut from "./Astronaut";
 import { useMemo } from "react";
 import pages from "../Pages/index.jsx";
-import ModeToggle from "../HomePage2D/ModeToggle";
 
 const HomePage = () => {
   const p = useMemo(() => pages, []);
   return (
     <>
-      <ModeToggle />
       <Canvas
       dpr={1}
       camera={{ fov: 110, position: [0, 50, 160] }}

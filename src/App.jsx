@@ -4,6 +4,7 @@ import Background from "./components/background/Background";
 import Test from "./components/Test/Test";
 import HomePage from "./components/HomePage";
 import HomePage2D from "./components/HomePage2D";
+import ModeToggle from "./components/HomePage2D/ModeToggle";
 import pages from "./components/Frames/index";
 import { useMemo } from "react";
 import { useDevicePerformance } from "./hooks/useDevicePerformance";
@@ -35,6 +36,7 @@ export const App = () => {
   return (
     <>
       <Overlay />
+      <ModeToggle />
       <Switch>
         <Route path="/">
           <HomePageRoute />

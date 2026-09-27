@@ -29,11 +29,12 @@ const Hero = () => {
             <i className="pi pi-arrow-down mr-2"></i>
             {t("heroCtaAbout")}
           </button>
-          <Link href="/">
-            <a className="p-button p-component p-button-lg p-button-raised text-white bg-purple-600 border-purple-600 hover:bg-purple-700 hover:border-purple-700">
-              <i className="pi pi-compass mr-2"></i>
-              {t("heroCta3d")}
-            </a>
+          <Link
+            href="/?force=3d"
+            className="p-button p-component p-button-lg p-button-raised text-white bg-purple-600 border-purple-600 hover:bg-purple-700 hover:border-purple-700"
+          >
+            <i className="pi pi-compass mr-2"></i>
+            {t("heroCta3d")}
           </Link>
         </div>
       </div>

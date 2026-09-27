@@ -3,13 +3,11 @@ import AboutSection from "./AboutSection";
 import SkillsSection from "./SkillsSection";
 import ProjectsSection from "./ProjectsSection";
 import ContactSection from "./ContactSection";
-import ModeToggle from "./ModeToggle";
 import "./HomePage2D.css";
 
 const HomePage2D = () => {
   return (
     <div className="homepage-2d flex flex-column min-h-screen surface-ground text-color">
-      <ModeToggle />
       <Hero />
       <AboutSection />
       <SkillsSection />

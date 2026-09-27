@@ -6,12 +6,18 @@ import HomePage from "./components/HomePage";
 import HomePage2D from "./components/HomePage2D";
 import ModeToggle from "./components/HomePage2D/ModeToggle";
 import pages from "./components/Frames/index";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useDevicePerformance } from "./hooks/useDevicePerformance";
 
 const HomePageRoute = () => {
   const { tier } = useDevicePerformance();
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (tier === "minimal" || tier === "low") {
+      setLocation("/2d");
+    }
+  }, [tier, setLocation]);
 
   if (tier === "detecting") {
     return null;
@@ -23,7 +29,6 @@ const HomePageRoute = () => {
   }
 
   if (tier === "minimal" || tier === "low") {
-    setLocation("/2d");
     return null;
   }
 

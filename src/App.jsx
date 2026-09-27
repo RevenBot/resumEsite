@@ -14,7 +14,8 @@ const HomePageRoute = () => {
   const [, setLocation] = useLocation();
 
   useEffect(() => {
-    if (tier === "minimal" || tier === "low") {
+    const params = new URLSearchParams(window.location.search);
+    if ((tier === "minimal" || tier === "low") && params.get("force") !== "3d") {
       setLocation("/2d");
     }
   }, [tier, setLocation]);

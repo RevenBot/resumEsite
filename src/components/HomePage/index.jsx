@@ -11,8 +11,7 @@ import pages from "../Pages/index.jsx";
 const HomePage = () => {
   const p = useMemo(() => pages, []);
   return (
-    <>
-      <Canvas
+    <Canvas
       dpr={1}
       camera={{ fov: 110, position: [0, 50, 160] }}
       style={{ cursor: "none" }}
@@ -32,7 +31,6 @@ const HomePage = () => {
       <Swarm count={20000} />
       <Postpro />
     </Canvas>
-    </>
   );
 };
 

@@ -1,6 +1,7 @@
+import Hero from "./Hero";
+
 const HomePage2D = () => {
   const sections = [
-    { id: "hero", label: "Hero" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
@@ -9,6 +10,7 @@ const HomePage2D = () => {
 
   return (
     <div className="homepage-2d flex flex-column min-h-screen surface-ground text-color">
+      <Hero />
       {sections.map((section) => (
         <section
           key={section.id}

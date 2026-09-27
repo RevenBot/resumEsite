@@ -3,6 +3,7 @@ import Overlay from "./components/Overlay/Overlay";
 import Background from "./components/background/Background";
 import Test from "./components/Test/Test";
 import HomePage from "./components/HomePage";
+import HomePage2D from "./components/HomePage2D";
 import pages from "./components/Frames/index";
 import { useMemo } from "react";
 
@@ -14,6 +15,7 @@ export const App = () => {
       <Overlay />
       <Switch>
         <Route path="/" component={HomePage} />
+        <Route path="/2d" component={HomePage2D} />
 
         {pagesroutes.map((item) => (
           <Route

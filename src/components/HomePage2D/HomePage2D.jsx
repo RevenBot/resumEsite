@@ -1,10 +1,10 @@
 import Hero from "./Hero";
 import AboutSection from "./AboutSection";
+import SkillsSection from "./SkillsSection";
 import ContactSection from "./ContactSection";
 
 const HomePage2D = () => {
   const sections = [
-    { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
   ];
 
@@ -12,6 +12,7 @@ const HomePage2D = () => {
     <div className="homepage-2d flex flex-column min-h-screen surface-ground text-color">
       <Hero />
       <AboutSection />
+      <SkillsSection />
       {sections.map((section) => (
         <section
           key={section.id}

@@ -1,10 +1,11 @@
-FROM node:20 AS builder
+FROM node:22 AS builder
 
 WORKDIR /app
 
 COPY package.json .
+COPY .npmrc .
 
-RUN npm install --force
+RUN npm install
 
 COPY . . 
 

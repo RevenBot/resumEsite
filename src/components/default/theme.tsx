@@ -1,4 +1,4 @@
-import { basedOnPreferredColorScheme, DefaultProperties, DefaultPropertiesProperties } from '@react-three/uikit'
+import { basedOnPreferredColorScheme, Container, ContainerProperties, withOpacity } from '@react-three/uikit'
 import React from 'react'
 import { Color } from 'three'
 
@@ -58,15 +58,22 @@ export const colors = basedOnPreferredColorScheme({
   },
 })
 
-export function Defaults(props: DefaultPropertiesProperties) {
+export function Defaults(props: Omit<ContainerProperties, 'children'>) {
   return (
-    <DefaultProperties
-      scrollbarColor={colors.foreground}
-      scrollbarBorderRadius={4}
-      scrollbarOpacity={0.3}
-      lineHeight="150%"
-      borderColor={colors.border}
-      color={colors.foreground}
+    <Container
+      display="contents"
+      {...{
+        '*': {
+          scrollbarColor: withOpacity(colors.foreground, 0.3),
+          scrollbarBorderTopLeftRadius: 4,
+          scrollbarBorderTopRightRadius: 4,
+          scrollbarBorderBottomLeftRadius: 4,
+          scrollbarBorderBottomRightRadius: 4,
+          lineHeight: "150%",
+          borderColor: colors.border,
+          color: colors.foreground,
+        },
+      }}
       {...props}
     />
   )

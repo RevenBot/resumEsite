@@ -46,9 +46,9 @@ const TimeoutMessage = () => {
           if (!visible) return;
           setVisible(false);
         }}
-        footer={footerContent}
         draggable={false}
         resizable={false}
+        footer={footerContent}
       >
         <p className="m-0">{t("timeout-message")}</p>
       </Dialog>

@@ -1,17 +1,16 @@
 import {
-  AllOptionalProperties,
   Container,
   ContainerProperties,
-  ContainerRef,
-  DefaultProperties,
+  withOpacity,
 } from '@react-three/uikit'
-import React, { ReactNode, RefAttributes, forwardRef } from 'react'
+import React, { ReactNode, forwardRef } from 'react'
+import { ColorRepresentation } from 'three'
 import { borderRadius, colors } from './theme.js'
 
 const buttonVariants = {
   default: {
     containerHoverProps: {
-      backgroundOpacity: 0.9,
+      backgroundColor: withOpacity(colors.primary, 0.9),
     },
     containerProps: {
       backgroundColor: colors.primary,
@@ -22,7 +21,7 @@ const buttonVariants = {
   },
   destructive: {
     containerHoverProps: {
-      backgroundOpacity: 0.9,
+      backgroundColor: withOpacity(colors.destructive, 0.9),
     },
     containerProps: {
       backgroundColor: colors.destructive,
@@ -43,7 +42,7 @@ const buttonVariants = {
   }, //TODO: hover:text-accent-foreground",
   secondary: {
     containerHoverProps: {
-      backgroundOpacity: 0.8,
+      backgroundColor: withOpacity(colors.secondary, 0.8),
     },
     containerProps: {
       backgroundColor: colors.secondary,
@@ -79,8 +78,8 @@ export type ButtonProperties = ContainerProperties & {
   disabled?: boolean
 }
 
-export const Button: (props: ButtonProperties & RefAttributes<ContainerRef>) => ReactNode = forwardRef(
-  ({ children, variant = 'default', size = 'default', disabled = false, hover, ...props }, ref) => {
+export const Button = forwardRef(
+  ({ children, variant = 'default', size = 'default', disabled = false, hover, ...props }: ButtonProperties, ref) => {
     const {
       containerProps,
       defaultProps,
@@ -88,7 +87,7 @@ export const Button: (props: ButtonProperties & RefAttributes<ContainerRef>) => 
     }: {
       containerHoverProps?: ContainerProperties['hover']
       containerProps?: Omit<ContainerProperties, 'hover'>
-      defaultProps?: AllOptionalProperties
+      defaultProps?: ContainerProperties['*']
     } = buttonVariants[variant]
     const sizeProps = buttonSizes[size]
 
@@ -99,8 +98,8 @@ export const Button: (props: ButtonProperties & RefAttributes<ContainerRef>) => 
         justifyContent="center"
         {...containerProps}
         {...sizeProps}
-        borderOpacity={disabled ? 0.5 : undefined}
-        backgroundOpacity={disabled ? 0.5 : undefined}
+        borderColor={disabled && containerProps?.borderColor ? withOpacity(containerProps.borderColor as ColorRepresentation, 0.5) : containerProps?.borderColor}
+        backgroundColor={disabled && containerProps?.backgroundColor ? withOpacity(containerProps.backgroundColor as ColorRepresentation, 0.5) : containerProps?.backgroundColor}
         cursor={disabled ? undefined : 'pointer'}
         flexDirection="row"
         hover={{
@@ -110,16 +109,16 @@ export const Button: (props: ButtonProperties & RefAttributes<ContainerRef>) => 
         ref={ref}
         {...props}
       >
-        <DefaultProperties
-          fontSize={14}
-          lineHeight={20}
-          fontWeight="medium"
-          wordBreak="keep-all"
-          {...defaultProps}
-          opacity={disabled ? 0.5 : undefined}
-        >
+        <Container display="contents" {...{ '*': {
+          fontSize: 14,
+          lineHeight: 20,
+          fontWeight: "medium",
+          wordBreak: "keep-all",
+          ...defaultProps,
+          opacity: disabled ? 0.5 : undefined,
+        }}}>
           {children}
-        </DefaultProperties>
+        </Container>
       </Container>
     )
   },

@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 
 function ImagePlane() {
-  const texture = useTexture("/img/projects/wordle-solver/main3.jpg?url");
+  const texture = useTexture("/img/projects/wordle-solver/main3.jpg");
   const { gl } = useThree();
 
 
@@ -23,7 +23,7 @@ function ImagePlane() {
     texture.magFilter = THREE.LinearFilter;
     texture.anisotropy = gl.capabilities.getMaxAnisotropy();
     texture.needsUpdate = true;
-  }, [texture]);
+  }, [texture, gl.capabilities]);
 
   return (
     <mesh>

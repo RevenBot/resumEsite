@@ -21,7 +21,7 @@ function Footer() {
             alt="repo"
           />
         </a>
-        <div>06/03/2024</div>
+        <div>04/09/2026</div>
       </div>
     </div>
   );

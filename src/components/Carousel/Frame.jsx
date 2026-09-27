@@ -4,6 +4,7 @@ import { useCursor, MeshPortalMaterial, Text } from "@react-three/drei";
 import { useRoute, useLocation } from "wouter";
 import { easing, geometry } from "maath";
 import useStore from "../../context/banner/store";
+import { useShallow } from "zustand/react/shallow";
 import { DoubleSide } from "three";
 
 extend(geometry);
@@ -19,7 +20,7 @@ export function Frame({
   ...props
 }) {
   const portal = useRef();
-  const { updateStatus } = useStore((state) => state);
+  const { updateStatus } = useStore(useShallow((state) => state));
   const { id, title, footer, description } = item;
   const [, setLocation] = useLocation();
   const [match, params] = useRoute("/frame/:id");

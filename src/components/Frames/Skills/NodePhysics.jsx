@@ -30,7 +30,7 @@ const NodePhysical = forwardRef(
     );
 
     const onCollision = (_) => {
-      setPos(_.rigidBody?.translation());
+      setPos(_.other.rigidBody?.translation());
       set((nodes) => [...nodes, state]);
     };
 
@@ -43,7 +43,7 @@ const NodePhysical = forwardRef(
     const [hovered, setHovered] = useState(false);
 
     const fontProps = {
-      font: "/Inter-Bold.woff?url",
+      font: "/Inter-Bold.woff",
       fontSize: 1,
       letterSpacing: -0.09,
       lineHeight: 0.6,
@@ -55,12 +55,12 @@ const NodePhysical = forwardRef(
       <RigidBody
         gravityScale={0}
         lockRotations={true} // Blocca tutte le rotazioni
-        lockTranslations={[false, true, false]}
+        enabledTranslations={[true, true, true]}
         type="dynamic"
         colliders="ball"
-        mass={0}
-        linearDamping={10}
-        onCollisionExit={onCollision}
+        mass={1}
+        linearDamping={1}
+        onCollisionEnter={onCollision}
         ref={ref}
         position={position}
         {...props}

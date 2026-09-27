@@ -12,7 +12,9 @@ jobs:
         with:
           node-version: "22"
       - name: Install Dependencies
-        run: npm i
+        run: npm ci
+      - name: Apply patches
+        run: npx patch-package
       - name: Build project
         run: npm run build
       - name: Check lint

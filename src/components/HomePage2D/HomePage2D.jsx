@@ -1,16 +1,17 @@
 import Hero from "./Hero";
+import AboutSection from "./AboutSection";
+import ContactSection from "./ContactSection";
 
 const HomePage2D = () => {
   const sections = [
-    { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
   ];
 
   return (
     <div className="homepage-2d flex flex-column min-h-screen surface-ground text-color">
       <Hero />
+      <AboutSection />
       {sections.map((section) => (
         <section
           key={section.id}
@@ -21,6 +22,7 @@ const HomePage2D = () => {
           <h2 className="text-4xl font-bold m-0">{section.label}</h2>
         </section>
       ))}
+      <ContactSection />
     </div>
   );
 };

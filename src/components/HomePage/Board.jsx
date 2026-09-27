@@ -1,8 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useState } from "react";
 import { MathUtils, Vector3 } from "three";
-import { Container, Text } from "@react-three/uikit";
-import SafeImage from "../Frames/SafeImage";
+import { Container, Text, Image } from "@react-three/uikit";
 import { Button } from "../default/button";
 import { useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
@@ -47,7 +46,7 @@ const Board = ({ page, onClickBack }) => {
     );
   });
   return (
-    <>
+    <group>
       <mesh
         position={isMobile ? [-200, -300, -500] : [-700, 150, -500]}
         rotation={[0, Math.PI / 4, 0]}
@@ -92,7 +91,7 @@ const Board = ({ page, onClickBack }) => {
             )}
             {page?.imageUrl != null && (
               <Container flexDirection="column" gap={4}>
-                <SafeImage width={150} src={page?.imageUrl} />
+                <Image width={150} src={page?.imageUrl} />
               </Container>
             )}
             {page?.linkButton != null && (
@@ -138,7 +137,7 @@ const Board = ({ page, onClickBack }) => {
           </Container>
         </Container>
       </mesh>
-    </>
+    </group>
   );
 };
 

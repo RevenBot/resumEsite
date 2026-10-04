@@ -1,0 +1,37 @@
+import { PresentationControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import Swarm from "./Swarm";
+import Postpro from "./PostPro";
+import Ambient from "./Ambient";
+import Scene from "./Scene";
+import Astronaut from "./Astronaut";
+import { useMemo } from "react";
+import pages from "../../../data/pages.js";
+
+const HomePage = () => {
+  const p = useMemo(() => pages, []);
+  return (
+    <Canvas
+      dpr={1}
+      camera={{ fov: 110, position: [0, 50, 160] }}
+      style={{ cursor: "none" }}
+    >
+      <PresentationControls
+        cursor={false}
+        global
+        snap={0.5}
+        rotation={[0, 0, 0]}
+        polar={[-Math.PI / 3, Math.PI / 3]}
+        azimuth={[-Math.PI / 1.4, Math.PI / 2]}
+      >
+        <Scene objects={p} />
+        <Ambient />
+      </PresentationControls>
+      <Astronaut />
+      <Swarm count={20000} />
+      <Postpro />
+    </Canvas>
+  );
+};
+
+export default HomePage;

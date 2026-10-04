@@ -3,7 +3,7 @@
 /* Mode toggle button — positioned fixed top-right, visible on both 2D and 3D pages */
 .mode-toggle {
   position: fixed;
-  top: 1rem;
+  top: 5rem;
   right: 1rem;
   z-index: 1000;
 }

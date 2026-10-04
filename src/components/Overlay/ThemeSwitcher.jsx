@@ -35,7 +35,7 @@ const ThemeSwitcher = () => {
           }}
           options={i18n.languages}
           placeholder="Select language"
-          className="w-full md:w-14rem"
+          className="w-full md:w-10rem"
           pt={{
             root: {
               style: { background: " var(--highlight-bg)" },

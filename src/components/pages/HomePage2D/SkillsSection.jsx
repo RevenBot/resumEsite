@@ -4,7 +4,6 @@ const skillCategories = [
   {
     label: "Frontend",
     skills: [
-      { id: "frontend", name: "Frontend" },
       { id: "html", name: "HTML" },
       { id: "css", name: "CSS" },
       { id: "javascript", name: "JavaScript" },
@@ -15,8 +14,7 @@ const skillCategories = [
   {
     label: "Backend",
     skills: [
-      { id: "backend", name: "Backend" },
-      { id: "csharp", name: "C#" },
+      { id: "cs", name: "C#" },
       { id: "python", name: "Python" },
       { id: "dotnet", name: ".NET" },
       { id: "django", name: "Django" },

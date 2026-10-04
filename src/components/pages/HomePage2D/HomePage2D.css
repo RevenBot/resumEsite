@@ -1,0 +1,40 @@
+/* HomePage2D.css — scoped styles for the 2D homepage */
+
+/* 2D page root container */
+.homepage-2d {
+  scroll-behavior: smooth;
+}
+
+/* Enable text selection on the 2D page.
+   The global rule in index.css disables selection for the 3D canvas interactions,
+   but a scrollable text page needs selectable text. */
+#root .homepage-2d,
+#root .homepage-2d * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Section spacing — consistent vertical rhythm */
+.homepage-2d > section,
+.homepage-2d > div[id] {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Typography overrides for 2D layout */
+.homepage-2d h1,
+.homepage-2d h2,
+.homepage-2d h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .homepage-2d > section,
+  .homepage-2d > div[id] {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}

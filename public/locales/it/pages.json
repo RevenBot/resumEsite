@@ -1,8 +1,18 @@
 {
-  "about-me" : "Junior Full Stack Developer, determinato a crescere professionalmente, sempre desideroso di imparare e affrontare nuove sfide.",
-  "skills" : "Sempre pronto ad adattarmi e imparare.",
-  "contacts" : "Interessato al mio lavoro? Contattami!",
-  "project-memories" : "Memories e' un sito per condividere ricordi di animali o altre categorie. Sviluppato con Django, utilizza SQLite per il database, Bootstrap per il design responsivo e JavaScript per l’interattivita.",
-  "project-wordlesolver" : "Worldle Solver e' un'app sviluppata con .NET MAUI Blazor per risolvere il gioco Wordle. L'app utilizza algoritmi logici e un'interfaccia intuitiva per suggerire possibili soluzioni in base ai tuoi progressi.",
-  "project-resume" : "Resume e' un sito portfolio creato con React.js e React Three Fiber per mostrare esperienze, competenze e progetti in modo interattivo. Integra grafica 3D per un’esperienza moderna e accattivante."
+  "heroTitle": "Junior Full Stack Developer",
+  "heroSubtitle": "Creo esperienze web moderne e interattive con React e Three.js",
+  "heroCtaAbout": "Chi Sono",
+  "heroCta3d": "Entra nel Mondo 3D",
+  "aboutTitle": "Chi Sono",
+  "contactTitle": "Contattami",
+  "skillsTitle": "Competenze",
+  "projectsTitle": "Progetti",
+  "about-me": "Junior Full Stack Developer, determinato a crescere professionalmente, sempre desideroso di imparare e affrontare nuove sfide.",
+  "skills": "Sempre pronto ad adattarmi e imparare.",
+  "contacts": "Interessato al mio lavoro? Contattami!",
+  "project-memories": "Memories e' un sito per condividere ricordi di animali o altre categorie. Sviluppato con Django, utilizza SQLite per il database, Bootstrap per il design responsivo e JavaScript per l’interattivita.",
+  "project-wordlesolver": "Worldle Solver e' un'app sviluppata con .NET MAUI Blazor per risolvere il gioco Wordle. L'app utilizza algoritmi logici e un'interfaccia intuitiva per suggerire possibili soluzioni in base ai tuoi progressi.",
+  "project-resume": "Resume e' un sito portfolio creato con React.js e React Three Fiber per mostrare esperienze, competenze e progetti in modo interattivo. Integra grafica 3D per un’esperienza moderna e accattivante.",
+  "toggle2d": "Entra in 2D",
+  "toggle3d": "Entra in 3D"
 }

@@ -1,10 +1,40 @@
-import { Route, Switch } from "wouter";
-import Overlay from "./components/Overlay/Overlay";
-import Background from "./components/background/Background";
-import Test from "./components/Test/Test";
-import HomePage from "./components/HomePage";
-import pages from "./components/Frames/index";
-import { useMemo } from "react";
+import { Route, Switch, useLocation } from "wouter";
+import Overlay from "./components/layout/Overlay/Overlay";
+import Background from "./components/pages/OldBackground/Background";
+import Test from "./components/pages/Test/Test";
+import HomePage from "./components/pages/HomePage";
+import HomePage2D from "./components/pages/HomePage2D";
+import ModeToggle from "./components/layout/ModeToggle/ModeToggle";
+import pages from "./components/pages/index";
+import { useMemo, useEffect } from "react";
+import { useDevicePerformance } from "./hooks/useDevicePerformance";
+
+const HomePageRoute = () => {
+  const { tier } = useDevicePerformance();
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if ((tier === "minimal" || tier === "low") && params.get("force") !== "3d") {
+      setLocation("/2d");
+    }
+  }, [tier, setLocation]);
+
+  if (tier === "detecting") {
+    return null;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("force") === "3d") {
+    return <HomePage />;
+  }
+
+  if (tier === "minimal" || tier === "low") {
+    return null;
+  }
+
+  return <HomePage />;
+};
 
 export const App = () => {
   const pagesroutes = useMemo(() => pages, []);
@@ -12,8 +42,12 @@ export const App = () => {
   return (
     <>
       <Overlay />
+      <ModeToggle />
       <Switch>
-        <Route path="/" component={HomePage} />
+        <Route path="/">
+          <HomePageRoute />
+        </Route>
+        <Route path="/2d" component={HomePage2D} />
 
         {pagesroutes.map((item) => (
           <Route

@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
+import "./ModeToggle.css";
 
 const ModeToggle = () => {
   const [location] = useLocation();

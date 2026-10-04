@@ -1,45 +1,19 @@
 /* HomePage2D.css — scoped styles for the 2D homepage */
 
-/* Mode toggle button — positioned fixed top-right, visible on both 2D and 3D pages */
-.mode-toggle {
-  position: fixed;
-  top: 5rem;
-  right: 1rem;
-  z-index: 1000;
-}
-
-.mode-toggle__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--surface-200, #e2e8f0);
-  background: rgba(30, 30, 30, 0.85);
-  border: 1px solid var(--surface-700, #334155);
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  cursor: pointer;
-}
-
-.mode-toggle__button:hover {
-  background: rgba(60, 60, 60, 0.95);
-  color: var(--primary-color, #a78bfa);
-  border-color: var(--primary-color, #a78bfa);
-}
-
-.mode-toggle__button:focus-visible {
-  outline: 2px solid var(--primary-color, #a78bfa);
-  outline-offset: 2px;
-}
-
 /* 2D page root container */
 .homepage-2d {
   scroll-behavior: smooth;
+}
+
+/* Enable text selection on the 2D page.
+   The global rule in index.css disables selection for the 3D canvas interactions,
+   but a scrollable text page needs selectable text. */
+#root .homepage-2d,
+#root .homepage-2d * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 /* Section spacing — consistent vertical rhythm */
@@ -58,31 +32,9 @@
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-  .mode-toggle {
-    top: 0.75rem;
-    right: 0.75rem;
-  }
-
-  .mode-toggle__button {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.75rem;
-  }
-
   .homepage-2d > section,
   .homepage-2d > div[id] {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .mode-toggle {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-
-  .mode-toggle__button {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.7rem;
   }
 }
